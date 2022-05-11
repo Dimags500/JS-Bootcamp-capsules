@@ -9,12 +9,30 @@ const getData = async () => {
       axios.get(`https://capsules-asb6.herokuapp.com/api/user/${student.id}`)
     )
   );
-  const students = responseArr.map((response) => response.data);
-  return students;
+  students = responseArr.map((response) => response.data);
 };
-const students = getData();
+let students = [];
+getData();
 let studentsFiltered = students;
-studentsFiltered = students.filter((student) => student.age > 18);
-studentsFiltered = studentsFiltered.filter((student) =>
-  student.name.includes("")
-);
+
+// change fillter
+let fillterSelected = "firstName";
+const select = document.querySelector("#sort-options");
+select.addEventListener("change", changefillter);
+function changefillter(event) {
+  const value = event.target.value;
+  fillterSelected = value;
+}
+
+// fillter
+const filterData = (event) => {
+  if (event.target.value)
+    studentsFiltered = students.filter((student) =>
+      student[fillterSelected]
+        .toString()
+        .includes(event.target.value.toLowerCase())
+    );
+  console.log(studentsFiltered);
+};
+// search
+document.addEventListener("input", filterData);
