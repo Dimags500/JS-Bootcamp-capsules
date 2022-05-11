@@ -14,14 +14,13 @@
     <div id="main-container">
         <div id="tools-container">
             <select name="sort by" id="sort-options">
-                <option value="all">all</option>
-                <option value="all">id</option>
-                <option value="all">gender</option>
-                <option value="all">firstName</option>
-                <option value="all">lastName</option>
-                <option value="all">hobby</option>
-                <option value="all">age</option>
-                <option value="all">capsule</option>
+                <option value="id">ID</option>
+                <option value="gender">Gender</option>
+                <option value="firstName" selected>First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="hobby">Hobby</option>
+                <option value="age">Age</option>
+                <option value="capsule">Capsule</option>
             </select>
             <input type="text" id="search-input">
             <button id="reset">Reset</button>
@@ -41,7 +40,7 @@
         </div>
 
     </div>
-
+    <script src="./scripts/rowBuilder.js"></script>
 </body>
 
 </html>
