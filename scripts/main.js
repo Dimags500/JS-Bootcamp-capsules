@@ -15,7 +15,6 @@ const getData = async () => {
 };
 let students = [];
 getData();
-console.log(s);
 let studentsFiltered = students;
 // change fillter
 let filterSelected = "firstName";
