@@ -11,6 +11,7 @@ const getData = async () => {
     )
   );
   students = responseArr.map((response) => response.data);
+  rowBuilder(students, document.getElementById("data-table"));
 };
 let students = [];
 getData();
@@ -23,29 +24,33 @@ select.addEventListener("change", changefillter);
 function changefillter(event) {
   const value = event.target.value;
   fillterSelected = value;
+  studentsFiltered = students;
+  rowBuilder(students, document.getElementById("data-table"));
 }
 
 // fillter
 const filterData = (event) => {
-  if (event.target.value)
+  if (event.target.value !== "" && event.target.value)
     studentsFiltered = students.filter((student) =>
       student[fillterSelected]
         .toString()
         .includes(event.target.value.toLowerCase())
     );
-  console.log(studentsFiltered);
+  else studentsFiltered = students;
+  rowBuilder(studentsFiltered, document.getElementById("data-table"));
 };
 // search
 document.addEventListener("input", filterData);
 // table
 function rowBuilder(data, table) {
+  table.innerText = "";
   data.forEach((item) => {
     let tr = document.createElement("tr");
     tr.classList.add("row");
     for (value of Object.values(item)) {
       let td = document.createElement("td");
 
-      td.innerHTML = value;
+      td.innerText = value;
       tr.append(td);
     }
     table.append(tr);
