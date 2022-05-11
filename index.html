@@ -10,32 +10,36 @@
 
   <body>
     <div id="main-container">
-      <div id="tools-container">
-        <select name="sort by" id="sort-options">
-          <option value="id">ID</option>
-          <option value="gender">Gender</option>
-          <option value="firstName" selected>First Name</option>
-          <option value="lastName">Last Name</option>
-          <option value="hobby">Hobby</option>
-          <option value="age">Age</option>
-          <option value="capsule">Capsule</option>
-        </select>
-        <input type="text" id="search-input" />
-        <button id="reset">Reset</button>
-      </div>
-      <div id="data-container">
-        <table id="data-table">
-          <tr class="row">
-            <th>id</th>
-            <th>gender</th>
-            <th>firstName</th>
-            <th>lastName</th>
-            <th>hobby</th>
-            <th>age</th>
-            <th>capsule</th>
-          </tr>
-        </table>
-      </div>
+        <div id="tools-container">
+            <select name="sort by" id="sort-options">
+                <option value="id">ID</option>
+                <option value="gender">Gender</option>
+                <option value="firstName" selected>First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="hobby">Hobby</option>
+                <option value="age">Age</option>
+                <option value="capsule">Capsule</option>
+
+            </select>
+            <input type="text" id="search-input">
+            <button id="reset">Reset</button>
+        </div>
+        <div id="data-container">
+            <table id="data-table">
+                <tr>
+                    <th id="sort-by-id">id</th>
+                    <th id="sort-by-gender">gender</th>
+                    <th id="sort-by-firstName">firstName</th>
+                    <th id="sort-by-lastName">lastName</th>
+                    <th id="sort-by-hobby">hobby</th>
+                    <th id="sort-by-age">age</th>
+                    <th id="sort-by-capsule">capsule</th>
+
+                </tr>
+            </table>
+        </div>
+
+
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./scripts/main.js"></script>
