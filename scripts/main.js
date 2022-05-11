@@ -15,7 +15,34 @@ const getData = async () => {
 };
 let students = [];
 getData();
+console.log(s);
 let studentsFiltered = students;
+// change fillter
+let filterSelected = "firstName";
+let searchKeywords = "";
+const select = document.querySelector("#sort-options");
+//
+function changefilter(event) {
+  const value = event.target.value;
+  filterSelected = value;
+  updateTable();
+}
+select.addEventListener("change", changefilter);
+// fillter
+const filterData = (event) => {
+  searchKeywords = event.target.value;
+  updateTable();
+};
+const input = document.querySelector("#search-input");
+input.addEventListener("input", filterData);
+const updateTable = () => {
+  if (searchKeywords !== "")
+    studentsFiltered = students.filter((student) =>
+      student[filterSelected].toString().includes(searchKeywords.toLowerCase())
+    );
+  else studentsFiltered = students;
+  rowBuilder(studentsFiltered, document.getElementById("data-table"));
+};
 // header
 const header = document.createElement("tr");
 const createHeader = () => {
@@ -36,35 +63,20 @@ const createHeader = () => {
   });
 };
 createHeader();
-// change fillter
-let fillterSelected = "firstName";
-const select = document.querySelector("#sort-options");
-select.addEventListener("change", changefillter);
-function changefillter(event) {
-  const value = event.target.value;
-  fillterSelected = value;
-  studentsFiltered = students;
-  rowBuilder(students, document.getElementById("data-table"));
-}
 
-// fillter
-const filterData = (event) => {
-  if (event.target.value !== "" && event.target.value)
-    studentsFiltered = students.filter((student) =>
-      student[fillterSelected]
-        .toString()
-        .includes(event.target.value.toLowerCase())
-    );
-  else studentsFiltered = students;
-  rowBuilder(studentsFiltered, document.getElementById("data-table"));
-};
-// search
-document.addEventListener("input", filterData);
 // table
 function rowBuilder(data, table) {
   table.innerText = "";
   table.append(header);
   data.forEach((item) => {
+    // buttons
+    const btnObjs = [
+      { class: "edit-btn", callback: editRow, text: "Edit" },
+      { class: "delete-btn", callback: deleteRow, text: "Delete" },
+      { class: "cancel-btn", callback: cancelEdit, text: "Cancel" },
+      { class: "confirm-btn", callback: confirmEdit, text: "Confirm" },
+    ];
+    // tablebuilding
     let tr = document.createElement("tr");
     tr.classList.add("row");
     for (value of Object.values(item)) {
@@ -73,6 +85,39 @@ function rowBuilder(data, table) {
       td.innerText = value;
       tr.append(td);
     }
+    btnObjs.forEach((btn) => {
+      const button = document.createElement("button");
+      button.classList.add(btn.class);
+      button.innerText = btn.text;
+      button.addEventListener("click", btn.callback);
+      tr.append(button);
+    });
     table.append(tr);
   });
+}
+function editRow(event) {
+  const rowchildren = event.target.parentElement.children;
+  for (let i = 1; i < 8; i++) {
+    rowchildren[i].setAttribute("contenteditable", true);
+  }
+}
+function deleteRow(event) {
+  const parent = event.target.parentElement;
+  const id = parent.children[0].innerText;
+  students = students.filter((student) => student.id !== id);
+  updateTable();
+}
+function cancelEdit(event) {
+  const rowchildren = event.target.parentElement.children;
+  for (let i = 1; i < 8; i++) {
+    rowchildren[i].setAttribute("contenteditable", false);
+  }
+  updateTable();
+}
+function confirmEdit(event) {
+  const rowchildren = event.target.parentElement.children;
+  let ID = rowchildren[0];
+  for (let i = 1; i < 8; i++) {
+    rowchildren[i].setAttribute("contenteditable", false);
+  }
 }

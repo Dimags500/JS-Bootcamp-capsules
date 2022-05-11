@@ -1,27 +1,21 @@
+#main-container {
+  margin: 10px;
+  background-color: antiquewhite;
 
-
-#main-container{
-
-    margin: 10px;
-    background-color: antiquewhite;
-
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
 
-#tools-container{
-    display: flex;
-    justify-content: center;
-
+#tools-container {
+  display: flex;
+  justify-content: center;
 }
 
-#data-container{
-    display: flex;
-    justify-content: center;
-
+#data-container {
+  display: flex;
+  justify-content: center;
 }
 
-.row{
-    background-color: aquamarine;
+.row {
+  background-color: aquamarine;
 }
