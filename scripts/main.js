@@ -51,8 +51,8 @@ const createHeader = () => {
     "First Name",
     "Last Name",
     "Hobby",
-    "City",
     "Age",
+    "City",
     "Capsule",
   ];
   headerKeys.forEach((key) => {
@@ -72,8 +72,6 @@ function rowBuilder(data, table) {
     const btnObjs = [
       { class: "edit-btn", callback: editRow, text: "Edit" },
       { class: "delete-btn", callback: deleteRow, text: "Delete" },
-      { class: "cancel-btn", callback: cancelEdit, text: "Cancel" },
-      { class: "confirm-btn", callback: confirmEdit, text: "Confirm" },
     ];
     // tablebuilding
     let tr = document.createElement("tr");
@@ -96,9 +94,12 @@ function rowBuilder(data, table) {
 }
 function editRow(event) {
   const rowchildren = event.target.parentElement.children;
+  const parent = event.target.parentElement;
+  let buttons = parent.querySelectorAll("button");
   for (let i = 1; i < 8; i++) {
     rowchildren[i].setAttribute("contenteditable", true);
   }
+  updateButton(buttons);
 }
 function deleteRow(event) {
   const parent = event.target.parentElement;
@@ -114,9 +115,35 @@ function cancelEdit(event) {
   updateTable();
 }
 function confirmEdit(event) {
-  const rowchildren = event.target.parentElement.children;
-  let ID = rowchildren[0];
+  const rowChildren = event.target.parentElement.children;
   for (let i = 1; i < 8; i++) {
-    rowchildren[i].setAttribute("contenteditable", false);
+    rowChildren[i].setAttribute("contenteditable", false);
+  }
+  updateStudent(rowChildren);
+  updateTable();
+}
+function updateStudent(rowChildren) {
+  let id = rowChildren[0].innerText;
+  const student = students.find((student) => student.id === id);
+  const studentKeys = Object.keys(student);
+  for (let i = 0; i < 8; i++) {
+    student[studentKeys[i]] = rowChildren[i].innerText;
+  }
+}
+//
+function updateButton(btnArr) {
+  const btnObjs = [
+    { class: "Cancel-btn", callback: cancelEdit, text: "Cancel" },
+    { class: "Confirm-btn", callback: confirmEdit, text: "Confirm" },
+  ];
+  const oldBtns = [
+    { class: "edit-btn", callback: editRow, text: "Edit" },
+    { class: "delete-btn", callback: deleteRow, text: "Delete" },
+  ];
+  for (let i = 0; i < 2; i++) {
+    btnArr[i].classList.add(btnObjs[i].class);
+    btnArr[i].innerText = btnObjs[i].text;
+    btnArr[i].removeEventListener("click", oldBtns[i].callback);
+    btnArr[i].addEventListener("click", btnObjs[i].callback);
   }
 }

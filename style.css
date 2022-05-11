@@ -19,3 +19,15 @@
 .row {
   background-color: aquamarine;
 }
+.edit-btn {
+  background-color: blue;
+}
+.delete-btn {
+  background-color: red;
+}
+.cancel-btn {
+  background-color: yellow;
+}
+.confirm-btn {
+  background-color: green;
+}
