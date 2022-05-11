@@ -1,4 +1,4 @@
-export function rowBuilder(data, table) {
+function rowBuilder(data, table) {
   data.forEach((item) => {
     let tr = document.createElement("tr");
     tr.classList.add("row");
