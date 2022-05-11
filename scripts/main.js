@@ -16,7 +16,26 @@ const getData = async () => {
 let students = [];
 getData();
 let studentsFiltered = students;
-
+// header
+const header = document.createElement("tr");
+const createHeader = () => {
+  const headerKeys = [
+    "ID",
+    "Gender",
+    "First Name",
+    "Last Name",
+    "Hobby",
+    "City",
+    "Age",
+    "Capsule",
+  ];
+  headerKeys.forEach((key) => {
+    const th = document.createElement("th");
+    th.innerText = key;
+    header.append(th);
+  });
+};
+createHeader();
 // change fillter
 let fillterSelected = "firstName";
 const select = document.querySelector("#sort-options");
@@ -44,6 +63,7 @@ document.addEventListener("input", filterData);
 // table
 function rowBuilder(data, table) {
   table.innerText = "";
+  table.append(header);
   data.forEach((item) => {
     let tr = document.createElement("tr");
     tr.classList.add("row");
