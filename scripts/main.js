@@ -54,6 +54,7 @@ const createHeader = () => {
     "Age",
     "City",
     "Capsule",
+    "",
   ];
   headerKeys.forEach((key) => {
     const th = document.createElement("th");
@@ -112,7 +113,9 @@ function cancelEdit(event) {
   for (let i = 1; i < 8; i++) {
     rowchildren[i].setAttribute("contenteditable", false);
   }
-  updateTable();
+  const parent = event.target.parentElement;
+  let buttons = parent.querySelectorAll("button");
+  updateButton2(buttons);
 }
 function confirmEdit(event) {
   const rowChildren = event.target.parentElement.children;
@@ -120,7 +123,9 @@ function confirmEdit(event) {
     rowChildren[i].setAttribute("contenteditable", false);
   }
   updateStudent(rowChildren);
-  updateTable();
+  const parent = event.target.parentElement;
+  let buttons = parent.querySelectorAll("button");
+  updateButton2(buttons);
 }
 function updateStudent(rowChildren) {
   let id = rowChildren[0].innerText;
@@ -142,6 +147,23 @@ function updateButton(btnArr) {
   ];
   for (let i = 0; i < 2; i++) {
     btnArr[i].classList.replace(oldBtns[i].class, btnObjs[i].class);
+    btnArr[i].innerText = btnObjs[i].text;
+    btnArr[i].removeEventListener("click", oldBtns[i].callback);
+    btnArr[i].addEventListener("click", btnObjs[i].callback);
+  }
+}
+function updateButton2(btnArr) {
+  const oldBtns = [
+    { class: "Cancel-btn", callback: cancelEdit, text: "Cancel" },
+    { class: "Confirm-btn", callback: confirmEdit, text: "Confirm" },
+  ];
+  const btnObjs = [
+    { class: "edit-btn", callback: editRow, text: "Edit" },
+    { class: "delete-btn", callback: deleteRow, text: "Delete" },
+  ];
+  for (let i = 0; i < 2; i++) {
+    btnArr[i].classList = btnObjs[i].class;
+    // btnArr[i].classList.add(btnObjs[i].class);
     btnArr[i].innerText = btnObjs[i].text;
     btnArr[i].removeEventListener("click", oldBtns[i].callback);
     btnArr[i].addEventListener("click", btnObjs[i].callback);
