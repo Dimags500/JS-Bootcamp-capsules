@@ -1,7 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#search-input {
+  width: 60%;
+  padding-bottom: 2rem;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 3rem;
+}
+button {
+  width: 12rem;
+  font-size: 3rem;
+}
 #main-container {
-  margin: 10px;
   background-color: antiquewhite;
-
   display: flex;
   flex-direction: column;
 }
@@ -20,7 +37,7 @@
   background-color: aquamarine;
 }
 .edit-btn {
-  background-color: blue;
+  background-color: rgb(0, 0, 255);
 }
 .delete-btn {
   background-color: red;
@@ -30,4 +47,36 @@
 }
 .confirm-btn {
   background-color: green;
+}
+.confirm-btn:hover,
+.cancel-btn:hover,
+.delete-btn:hover,
+.edit-btn:hover {
+  opacity: 0.7;
+}
+.confirm-btn,
+.cancel-btn,
+.delete-btn,
+.edit-btn {
+  transition: all ease-in-out 0.2s;
+}
+@media screen and (max-width: 800px) and (min-width: 699px) {
+  html {
+    font-size: 9px;
+  }
+}
+@media screen and (max-width: 700px) and (min-width: 499px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 500px) and (min-width: 300px) {
+  html {
+    font-size: 3.5px;
+  }
+}
+@media screen and (max-width: 299px) and (min-width: 100px) {
+  html {
+    font-size: 3px;
+  }
 }

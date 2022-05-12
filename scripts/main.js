@@ -133,15 +133,15 @@ function updateStudent(rowChildren) {
 //
 function updateButton(btnArr) {
   const btnObjs = [
-    { class: "Cancel-btn", callback: cancelEdit, text: "Cancel" },
-    { class: "Confirm-btn", callback: confirmEdit, text: "Confirm" },
+    { class: "cancel-btn", callback: cancelEdit, text: "Cancel" },
+    { class: "confirm-btn", callback: confirmEdit, text: "Confirm" },
   ];
   const oldBtns = [
     { class: "edit-btn", callback: editRow, text: "Edit" },
     { class: "delete-btn", callback: deleteRow, text: "Delete" },
   ];
   for (let i = 0; i < 2; i++) {
-    btnArr[i].classList.add(btnObjs[i].class);
+    btnArr[i].classList.replace(oldBtns[i].class, btnObjs[i].class);
     btnArr[i].innerText = btnObjs[i].text;
     btnArr[i].removeEventListener("click", oldBtns[i].callback);
     btnArr[i].addEventListener("click", btnObjs[i].callback);
