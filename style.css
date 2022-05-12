@@ -8,28 +8,11 @@ body {
   background-color: #f4f4f4;
 }
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#search-input {
-  width: 60%;
-  padding-bottom: 2rem;
-}
-html {
-  font-size: 10px;
-}
-body {
-  font-size: 3rem;
-}
 button {
   width: 12rem;
   font-size: 3rem;
 }
 #main-container {
-  background-color: antiquewhite;
   display: flex;
   flex-direction: column;
 }
@@ -71,7 +54,7 @@ button {
   height: 2.5rem;
   background-color: #333;
   border: #333 1px solid;
-  font-size: 16px;
+  font-size: 1rem;
 
 }
 .edit-btn {
@@ -84,12 +67,12 @@ button {
   background-color: #d32f2f;
   border: 1px solid #d32f2f;
 }
-.Cancel-btn {
+.cancel-btn {
   background-color: #ffd600;
   border: #ffd600 1px solid ;
   color: black;
 }
-.Confirm-btn {
+.confirm-btn {
   background-color: #008000;
   border: #008000 1px solid ;
 }
