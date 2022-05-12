@@ -54,6 +54,7 @@ const createHeader = () => {
     "Age",
     "City",
     "Capsule",
+    "",
   ];
   headerKeys.forEach((key) => {
     const th = document.createElement("th");

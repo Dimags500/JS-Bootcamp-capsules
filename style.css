@@ -1,7 +1,14 @@
-#main-container {
-  margin: 10px;
-  background-color: antiquewhite;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+#main-container {
   display: flex;
   flex-direction: column;
 }
@@ -9,6 +16,7 @@
 #tools-container {
   display: flex;
   justify-content: center;
+  gap: 0.8rem
 }
 
 #data-container {
@@ -16,18 +24,49 @@
   justify-content: center;
 }
 
+table {
+  margin: 1rem;
+}
 .row {
-  background-color: aquamarine;
+  background-color: #d3d3d3;
+}
+
+td,th {
+  padding: 0.8rem;
+  text-align: center;
+}
+
+tr {
+  background-color: #949494;
+}
+
+button {
+  border-radius: 5px;
+  margin: 0.2rem;
+  color: white;
+  padding: 0.3rem;
+  cursor: pointer;
+  width: 5.4rem;
+  height: 2.5rem;
+  background-color: #333;
+  border: #333 1px solid;
+  font-size: 16px;
+
 }
 .edit-btn {
-  background-color: blue;
+  background-color: #2979ff;
+  border: 1px solid #2979ff;
 }
 .delete-btn {
-  background-color: red;
+  background-color: #d32f2f;
+  border: 1px solid #d32f2f;
 }
-.cancel-btn {
-  background-color: yellow;
+.Cancel-btn {
+  background-color: #ffd600;
+  border: #ffd600 1px solid ;
+  color: black;
 }
-.confirm-btn {
-  background-color: green;
+.Confirm-btn {
+  background-color: #008000;
+  border: #008000 1px solid ;
 }
